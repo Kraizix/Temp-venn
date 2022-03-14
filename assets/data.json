@@ -1,0 +1,110 @@
+{
+  "members": [
+    {
+      "firstname": "Paul Antoine",
+      "lastname": "Abeille",
+      "favoriteColor": "green"
+    },
+    {
+      "firstname": "Killian",
+      "lastname": "Adonaï",
+      "favoriteColor": "purple"
+    },
+    {
+      "firstname": "Clément",
+      "lastname": "AUGIER de MOUSSAC",
+      "favoriteColor": "black"
+    },
+    { "firstname": "Valentin", "lastname": "Barit", "favoriteColor": "green" },
+    { "firstname": "Léo", "lastname": "Bourin", "favoriteColor": "red" },
+    { "firstname": "Arnaud", "lastname": "Boyer", "favoriteColor": "blue" },
+    {
+      "firstname": "Maxime",
+      "lastname": "Chasson",
+      "favoriteColor": "#318ce7"
+    },
+    {
+      "firstname": "Adrien",
+      "lastname": "Clamadieu-Tharaud",
+      "favoriteColor": "blue"
+    },
+    { "firstname": "Joseph", "lastname": "Cloux", "favoriteColor": "blue" },
+    { "firstname": "Mathis", "lastname": "Coco", "favoriteColor": "blue" },
+    { "firstname": "Thomas", "lastname": "Curmi", "favoriteColor": "purple" },
+    {
+      "firstname": "Valentin",
+      "lastname": "DAUTREMENT",
+      "favoriteColor": "yellow"
+    },
+    {
+      "firstname": "Nicolas",
+      "lastname": "de Bengy",
+      "favoriteColor": "yellow"
+    },
+    {
+      "firstname": "Valentin",
+      "lastname": "Diologent",
+      "favoriteColor": "red"
+    },
+    {
+      "firstname": "Mattéo",
+      "lastname": "Ferreira",
+      "favoriteColor": "#fab478"
+    },
+    {
+      "firstname": "Matthias",
+      "lastname": "Flament",
+      "favoriteColor": "blue"
+    },
+    { "firstname": "Dorian", "lastname": "Fonseca", "favoriteColor": "blue" },
+    {
+      "firstname": "Benjamin",
+      "lastname": "Gelineau",
+      "favoriteColor": "blue"
+    },
+    { "firstname": "Kévin", "lastname": "Granger", "favoriteColor": "red" },
+    {
+      "firstname": "Fabian",
+      "lastname": "Ingremeau",
+      "favoriteColor": "green"
+    },
+    {
+      "firstname": "Antonin",
+      "lastname": "Jouannet",
+      "favoriteColor": "red"
+    },
+    { "firstname": "Dorian", "lastname": "Levée", "favoriteColor": "green" },
+    { "firstname": "Clément", "lastname": "Manant", "favoriteColor": "blue" },
+    {
+      "firstname": "Manoa",
+      "lastname": "Marchand",
+      "favoriteColor": "#d4f2d2"
+    },
+    {
+      "firstname": "Guillaume",
+      "lastname": "Mareschal",
+      "favoriteColor": "purple"
+    },
+    {
+      "firstname": "Louis",
+      "lastname": "Merlaud",
+      "favoriteColor": "lightgray"
+    },
+    {
+      "firstname": "romain",
+      "lastname": "michel",
+      "favoriteColor": "aquamarine"
+    },
+    { "firstname": "Yrlan", "lastname": "Montagnier", "favoriteColor": "blue" },
+    {
+      "firstname": "Maxime",
+      "lastname": "Mourgues",
+      "favoriteColor": "#58b049"
+    },
+    { "firstname": "Enzo", "lastname": "Peyrataud", "favoriteColor": "green" },
+    { "firstname": "Costa", "lastname": "Reype", "favoriteColor": "darkblue" },
+    { "firstname": "David", "lastname": "Roussat", "favoriteColor": "red" },
+    { "firstname": "Gaetan", "lastname": "Roux", "favoriteColor": "blue" },
+    { "firstname": "Léo", "lastname": "Séry", "favoriteColor": "orange" }
+  ]
+}
