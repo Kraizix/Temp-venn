@@ -19,6 +19,14 @@ function Members({ navigation, route }) {
         style={styles.navbar}
         navigation={navigation}
       />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Generate", { member: route.params.member })
+        }
+        style={styles.button}
+      >
+        <Text style={styles.label}>Générer un QRCode</Text>
+      </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.list}>
         {data.members.map((member) => (
           <View

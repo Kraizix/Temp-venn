@@ -8,12 +8,7 @@ function Navbar({ color, label, navigation }) {
     <View style={styles.container}>
       <Avatar label="" color={color} size={SIZE} />
       <Text style={styles.username}>{label}</Text>
-      <TouchableOpacity
-        style={styles.touch}
-        onPress={() => navigation.navigate("Camera")}
-      >
-        <Image source={require("../../assets/icon.png")} style={styles.logo} />
-      </TouchableOpacity>
+      <Image source={require("../../assets/icon.png")} style={styles.logo} />
     </View>
   );
 }

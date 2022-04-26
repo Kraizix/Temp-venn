@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import member_data from "../../assets/data.json";
 
 function Camera({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -15,7 +16,29 @@ function Camera({ navigation }) {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    if (data) {
+      let obj;
+      try {
+        obj = JSON.parse(data);
+      } catch (e) {
+        alert(`Unrecognized QR Code :(`);
+        return;
+      }
+      if (obj[0].HEADER === "EXPO1337") {
+        let value = `${obj[1].firstname} ${obj[1].lastname}`;
+        const newMember = member_data.members.find(
+          ({ firstname, lastname }) => {
+            const fullName = `(${firstname}|${lastname}) (${lastname}|${firstname})`;
+            return value.match(new RegExp(fullName, "i"));
+          }
+        );
+        if (newMember) {
+          navigation.navigate("Members", { member: newMember });
+        }
+      } else {
+        alert(`Unrecognized QR code :(`);
+      }
+    }
   };
 
   if (hasPermission === null) {

@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   View,
+  TouchableOpacity,
 } from "react-native";
 
 import app from "../../app.json";
@@ -43,7 +44,15 @@ function Identification({ navigation }) {
     <View style={styles.root}>
       <View style={styles.header}>
         <Text style={styles.title}>{app.expo.name}</Text>
-        <Image source={require("../../assets/icon.png")} style={styles.logo} />
+        <TouchableOpacity
+          style={styles.touch}
+          onPress={() => navigation.navigate("Camera")}
+        >
+          <Image
+            source={require("../../assets/icon.png")}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         {member ? (
