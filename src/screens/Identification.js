@@ -63,7 +63,7 @@ function Identification({ navigation }) {
             </Text>
             <Button
               title="Go to Members"
-              onPress={() => navigation.navigate("Members", { member: member })}
+              onPress={() => navigation.navigate("Accueil", { member: member })}
             />
           </>
         ) : (
