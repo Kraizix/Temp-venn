@@ -34,6 +34,7 @@ import Identification from "./screens/Identification";
 import Camera from "./screens/Camera";
 import Generate from "./screens/Generate";
 import Home from "./screens/Home";
+import CreateProject from "./screens/CreateProject";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -49,6 +50,7 @@ export default function App() {
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="Generate" component={Generate} />
         <Stack.Screen name="Accueil" component={Home} />
+        <Stack.Screen name="CreateProject" component={CreateProject} />
       </Stack.Navigator>
     </NavigationContainer>
   );
