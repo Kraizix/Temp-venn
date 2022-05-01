@@ -36,6 +36,7 @@ import Generate from "./screens/Generate";
 import Home from "./screens/Home";
 import ProjectDetails from "./screens/ProjectDetails";
 import Projects from "./screens/Projects";
+import AddUrl from "./screens/AddUrl";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -53,6 +54,7 @@ export default function App() {
         <Stack.Screen name="Accueil" component={Home} />
         <Stack.Screen name="Projects" component={Projects} />
         <Stack.Screen name="ProjectDetails" component={ProjectDetails} />
+        <Stack.Screen name="Url" component={AddUrl} />
       </Stack.Navigator>
     </NavigationContainer>
   );

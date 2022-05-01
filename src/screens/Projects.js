@@ -38,13 +38,8 @@ function Projects({ navigation, route }) {
     );
   }
   const renderItem = ({ item }) => (
-    <Project
-      title={item.title}
-      participants={item.participants}
-      navigation={navigation}
-      route={route}
-      tags={item.tags}
-    />
+    console.log(item),
+    (<Project project={item} navigation={navigation} route={route} />)
   );
   return (
     <View style={styles.root}>
@@ -57,14 +52,14 @@ function Projects({ navigation, route }) {
   );
 }
 
-function Project({ title, participants, tags, navigation, route }) {
+function Project({ project, navigation, route }) {
   const NavigateToProjectDetails = () => {
     navigation.navigate("ProjectDetails", {
-      project: { title, participants, tags },
+      project: project,
       member: route.params.member,
     });
   };
-  const avatars = participants
+  const avatars = project.participants
     .map((id) => {
       const participant = data.members.find((member) => member.id === id);
       if (!participant) {
@@ -80,9 +75,9 @@ function Project({ title, participants, tags, navigation, route }) {
   return (
     <View style={styles.project}>
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{project.title}</Text>
         <View style={styles.tags}>
-          {tags.map((label, index) => (
+          {project.tags.map((label, index) => (
             <View key={index} style={styles.participant}>
               <Tag label={label} />
             </View>

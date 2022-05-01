@@ -6,6 +6,8 @@ import {
   getFirestore,
   query,
   getDocFromCache,
+  updateDoc,
+  getDoc,
 } from "firebase/firestore";
 
 const config = {
@@ -30,4 +32,22 @@ export async function getAll(name) {
 export async function getOne(name, id) {
   const snapshot = await getDocFromCache(doc(db, name, id));
   return parseDocument(snapshot);
+}
+
+export async function updateUrl(project, url, title) {
+  console.log(project);
+  const docRef = doc(db, "projects", project.id);
+  const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
+  console.log("aaaaaaaaaaaaaaaaaaaaaa");
+  console.log(data);
+  if (data.urls) {
+    await updateDoc(docRef, {
+      urls: [...data.urls, { url, title }],
+    });
+  } else {
+    await updateDoc(docRef, {
+      urls: [{ url, title }],
+    });
+  }
 }

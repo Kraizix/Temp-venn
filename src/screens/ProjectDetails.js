@@ -1,4 +1,6 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, ScrollView } from "react-native";
+import * as Clipboard from "expo-clipboard";
+import { LinkPreview } from "@flyerhq/react-native-link-preview";
 import { useEffect, useState } from "react";
 
 import { getAll } from "../firebase";
@@ -9,6 +11,12 @@ import Button from "../components/Button";
 import Tag from "../components/Tag";
 
 function ProjectDetails({ navigation, route }) {
+  const NavigateToAddUrl = () => {
+    navigation.navigate("Url", {
+      project: route.params.project,
+      member: route.params.member,
+    });
+  };
   const avatars = route.params.project.participants
     .map((id) => {
       const participant = data.members.find((member) => member.id === id);
@@ -51,9 +59,26 @@ function ProjectDetails({ navigation, route }) {
         <View style={styles.button}>
           <Button title="Modifier" />
         </View>
+        {route.params.project.urls && (
+          <ScrollView style={styles.urls}>
+            {route.params.project.urls.map((url, index) => (
+              <View key={index} style={styles.url}>
+                <LinkPreview text={url.url} size="150" style={styles.preview} />
+                <View>
+                  <Text style={styles.label}>{url.title}</Text>
+                  <Button
+                    style={styles.buttons}
+                    title="Copier Url"
+                    onPress={() => Clipboard.setString(url.url)}
+                  />
+                </View>
+              </View>
+            ))}
+          </ScrollView>
+        )}
       </View>
       <View style={styles.footer}>
-        <Button title="Ajouter un lien" />
+        <Button title="Ajouter un lien" onPress={NavigateToAddUrl} />
       </View>
     </View>
   );
@@ -92,6 +117,24 @@ const styles = StyleSheet.create({
   },
   tags: {
     flexDirection: "row",
+  },
+  url: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderColor: "black",
+    borderWidth: 4,
+    borderStyle: "solid",
+    backgroundColor: "white",
+    flexDirection: "row",
+  },
+  urls: {
+    height: 200,
+  },
+  buttons: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 });
 
