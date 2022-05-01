@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Members from "./Members";
 import Projects from "./Projects";
+import AddUrl from "./AddUrl";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,6 +36,15 @@ function Home({ navigation, route }) {
         options={{
           tabBarIcon: (props) => (
             <MaterialCommunityIcons name="account-multiple" {...props} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Add Url"
+        component={AddUrl}
+        options={{
+          tabBarIcon: (props) => (
+            <MaterialCommunityIcons name="link" {...props} />
           ),
         }}
       />
