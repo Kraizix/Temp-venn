@@ -33,7 +33,7 @@ function Camera({ navigation }) {
           }
         );
         if (newMember) {
-          navigation.navigate("Members", { member: newMember });
+          navigation.navigate("Accueil", { member: newMember });
         }
       } else {
         alert(`Unrecognized QR code :(`);

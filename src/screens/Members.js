@@ -12,7 +12,7 @@ import Navbar from "../components/Navbar";
 
 function Members({ navigation, route }) {
   return (
-    <View>
+    <View style={styles.root}>
       <Navbar
         label={`${route.params.member.firstname} ${route.params.member.lastname}`}
         color={route.params.member.favoriteColor}
@@ -52,6 +52,9 @@ function Members({ navigation, route }) {
 export default Members;
 
 const styles = StyleSheet.create({
+  root: {
+    flexGrow: 1,
+  },
   list: {
     flexDirection: "row",
     flexWrap: "wrap",

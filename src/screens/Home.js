@@ -22,6 +22,7 @@ function Home({ navigation, route }) {
       <Tab.Screen
         name="Projets"
         component={Projects}
+        initialParams={{ member: route.params.member }}
         options={{
           tabBarIcon: (props) => (
             <MaterialCommunityIcons name="briefcase-account" {...props} />

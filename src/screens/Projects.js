@@ -1,11 +1,14 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { useEffect, useState } from "react";
+import { useRoute } from "@react-navigation/native";
 
 import { getAll } from "../firebase";
 import Avatar from "../components/Avatar";
+import Button from "../components/Button";
 import data from "../../assets/data.json";
+import Tag from "../components/Tag";
 
-function Projects() {
+function Projects({ navigation, route }) {
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
   const getProjects = async () => {
@@ -34,7 +37,15 @@ function Projects() {
       </View>
     );
   }
-  const renderItem = ({ item }) => <Project {...item} />;
+  const renderItem = ({ item }) => (
+    <Project
+      title={item.title}
+      participants={item.participants}
+      navigation={navigation}
+      route={route}
+      tags={item.tags}
+    />
+  );
   return (
     <View style={styles.root}>
       <FlatList
@@ -46,7 +57,13 @@ function Projects() {
   );
 }
 
-function Project({ title, participants }) {
+function Project({ title, participants, tags, navigation, route }) {
+  const NavigateToProjectDetails = () => {
+    navigation.navigate("ProjectDetails", {
+      project: { title, participants, tags },
+      member: route.params.member,
+    });
+  };
   const avatars = participants
     .map((id) => {
       const participant = data.members.find((member) => member.id === id);
@@ -62,16 +79,31 @@ function Project({ title, participants }) {
     .filter(Boolean);
   return (
     <View style={styles.project}>
-      <Text style={styles.title}>{title}</Text>
-      {avatars?.length > 0 && (
-        <View style={styles.participants}>
-          {avatars.map(({ id, label, color }) => (
-            <View key={id} style={styles.participant}>
-              <Avatar label={label} color={color} />
+      <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
+        <View style={styles.tags}>
+          {tags.map((label, index) => (
+            <View key={index} style={styles.participant}>
+              <Tag label={label} />
             </View>
           ))}
         </View>
+      </View>
+      {avatars?.length > 0 && (
+        <View style={styles.participants}>
+          {avatars.slice(0, 3).map(({ id, label, color }) => (
+            <View key={id} style={styles.participant}>
+              <Avatar label={label} color={color} size={70} />
+            </View>
+          ))}
+          {avatars?.length > 3 && (
+            <View style={styles.count}>
+              <Text>+ {avatars.length - 3} autres</Text>
+            </View>
+          )}
+        </View>
       )}
+      <Button title="Voir Projet" onPress={NavigateToProjectDetails} />
     </View>
   );
 }
@@ -97,10 +129,20 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   participants: {
+    marginBottom: 5,
     flexDirection: "row",
   },
   participant: {
     marginRight: 8,
+  },
+  container: {
+    flexDirection: "row",
+  },
+  tags: {
+    flexDirection: "row",
+  },
+  count: {
+    justifyContent: "center",
   },
 });
 

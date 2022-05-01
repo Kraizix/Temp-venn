@@ -15,8 +15,8 @@ function Camera({ navigation, route }) {
         navigation={navigation}
       />
       <View style={styles.container}>
-        <Text>Ton QR Code :</Text>
-        <QRCode value={data} />
+        <Text style={styles.text}>Ton QR Code :</Text>
+        <QRCode size={250} value={data} />
       </View>
     </View>
   );
@@ -29,5 +29,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  text: {
+    fontSize: 20,
+    marginBottom: 5,
   },
 });

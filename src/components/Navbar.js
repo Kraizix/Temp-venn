@@ -24,9 +24,10 @@ const createStyles = ({ color }) =>
     container: {
       alignItems: "center",
       flexDirection: "row",
-      marginTop: 14,
-      marginLeft: 10,
-      marginRight: 10,
+      paddingTop: 14,
+      paddingLeft: 10,
+      paddingRight: 10,
+      backgroundColor: "#E8EAEA",
     },
     username: {
       fontSize: 25,
