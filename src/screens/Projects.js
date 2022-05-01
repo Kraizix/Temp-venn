@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, ScrollView } from "react-native";
 import { useEffect, useState } from "react";
 
 import { getAll } from "../firebase";
@@ -36,13 +36,13 @@ function Projects() {
   }
   const renderItem = ({ item }) => <Project {...item} />;
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <FlatList
         data={projects}
         renderItem={renderItem}
         keyExtractor={(project) => project.id}
       />
-    </View>
+    </ScrollView>
   );
 }
 
