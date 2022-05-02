@@ -41,7 +41,10 @@ function Members({ navigation, route }) {
         ))}
       </ScrollView>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("AddMembers")}
+          style={styles.button}
+        >
           <Text style={styles.label}>Inviter</Text>
         </TouchableOpacity>
       </View>

@@ -57,7 +57,14 @@ function ProjectDetails({ navigation, route }) {
           ))}
         </View>
         <View style={styles.button}>
-          <Button title="Modifier" />
+          <Button
+            onPress={() =>
+              navigation.navigate("EditProject", {
+                project: route.params.project,
+              })
+            }
+            title="Modifier"
+          />
         </View>
         {route.params.project.urls && (
           <ScrollView style={styles.urls}>

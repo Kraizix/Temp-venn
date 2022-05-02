@@ -51,3 +51,14 @@ export async function updateUrl(project, url, title) {
     });
   }
 }
+
+export async function updateProject({ id, title, participants, tags }) {
+  console.log(id);
+  const docRef = doc(db, "projects", id);
+  console.log("aaaaaaaaaaaaaaaaaaaaaa");
+  await updateDoc(docRef, {
+    title: title,
+    participants: participants,
+    tags: tags,
+  });
+}
