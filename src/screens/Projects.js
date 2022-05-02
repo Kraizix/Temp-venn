@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, ScrollView } from "react-native";
 import { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 
@@ -42,13 +42,13 @@ function Projects({ navigation, route }) {
     (<Project project={item} navigation={navigation} route={route} />)
   );
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <FlatList
         data={projects}
         renderItem={renderItem}
         keyExtractor={(project) => project.id}
       />
-    </View>
+    </ScrollView>
   );
 }
 

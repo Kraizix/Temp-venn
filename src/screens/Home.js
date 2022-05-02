@@ -5,8 +5,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Members from "./Members";
 import Projects from "./Projects";
+<<<<<<< HEAD
 import AddUrl from "./AddUrl";
 
+=======
+import CreateProject from "./CreateProject";
+>>>>>>> CreateProjects
 const Tab = createBottomTabNavigator();
 
 function Home({ navigation, route }) {
@@ -34,6 +38,17 @@ function Home({ navigation, route }) {
         name="Membres"
         component={Members}
         initialParams={{ member: route.params.member }}
+        options={{
+          tabBarIcon: (props) => (
+            <MaterialCommunityIcons name="account-multiple" {...props} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Crée un projet"
+        component={CreateProject}
+        initialParams={{ member: route.params.member }}
+        // initialParams={{ member: route.params.CreateProject }}
         options={{
           tabBarIcon: (props) => (
             <MaterialCommunityIcons name="account-multiple" {...props} />

@@ -1,31 +1,5 @@
-// import { registerRootComponent } from "expo";
-// import { StatusBar } from "expo-status-bar";
-// import { StyleSheet, View } from "react-native";
-
-// import Members from "./screens/Members";
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Members />
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
-// registerRootComponent(App);
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
 import { registerRootComponent } from "expo";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -37,6 +11,7 @@ import Home from "./screens/Home";
 import ProjectDetails from "./screens/ProjectDetails";
 import Projects from "./screens/Projects";
 import AddUrl from "./screens/AddUrl";
+import CreateProject from "./screens/CreateProject";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -55,6 +30,7 @@ export default function App() {
         <Stack.Screen name="Projects" component={Projects} />
         <Stack.Screen name="ProjectDetails" component={ProjectDetails} />
         <Stack.Screen name="Url" component={AddUrl} />
+        <Stack.Screen name="CreateProject" component={CreateProject} />
       </Stack.Navigator>
     </NavigationContainer>
   );
