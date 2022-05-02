@@ -5,6 +5,7 @@ import {
   FlatList,
   TextInput,
   TouchableHighlight,
+  TouchableOpacity,
   AlertIOS,
 } from "react-native";
 import React, { Component } from "react";
@@ -18,6 +19,7 @@ import Avatar from "../components/Avatar";
 import data from "../../assets/data.json";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import TagButton from "../components/TagButton";
 
 export default class CreateProject extends Component {
   constructor(props) {
@@ -36,6 +38,7 @@ export default class CreateProject extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onPress = this.onPress.bind(this);
     this.onPressTag = this.onPressTag.bind(this);
+    this.onPressDelete = this.onPressDelete.bind(this);
   }
   onPress() {
     console.log(this.state.value);
@@ -46,10 +49,13 @@ export default class CreateProject extends Component {
         return this.state.value.match(new RegExp(fullName, "i"));
       });
       if (newMember) {
+        if (this.state.participants.includes(newMember.id.toString())) {
+          showMessage("Membre déjà présent dans le groupe", { duration: 3000 });
+          return;
+        }
         this.setState((prevState) => ({
           participants: [...prevState.participants, newMember.id.toString()],
         }));
-        this.setState({ value: "" });
         console.log(this.state.participants);
         showMessage("Participant ajouté !", {
           duration: 3000,
@@ -61,12 +67,15 @@ export default class CreateProject extends Component {
     }
   }
   onPressTag() {
+    if (this.state.tags.includes(this.state.tag)) {
+      showMessage("Tag déjà présent dans le projet", { duration: 3000 });
+      return;
+    }
     console.log(this.state.tags);
     if (this.state.tag.length > 0) {
       this.setState((prevState) => ({
         tags: [...prevState.tags, this.state.tag],
       }));
-      this.setState({ tag: "" });
       console.log(this.state.tags);
       showMessage("Tag bien ajouté !", { duration: 3000 });
     }
@@ -92,8 +101,37 @@ export default class CreateProject extends Component {
     });
     this.props.navigation.navigate("Projets");
   }
+  onPressDelete(label) {
+    console.log(label);
+    console.log(this.state.tags.filter((item) => item !== label));
+    this.setState((prevState) => ({
+      tags: prevState.tags.filter((item) => item !== label),
+    }));
+    console.log(this.state.tags);
+  }
+  onPressDeleteUser(label) {
+    console.log(label);
+    console.log(this.state.participants.filter((item) => item !== label));
+    this.setState((prevState) => ({
+      participants: prevState.participants.filter((item) => item !== label),
+    }));
+    console.log(this.state.participants);
+  }
 
   render() {
+    const avatars = this.state.participants
+      .map((id) => {
+        const participant = data.members.find((member) => member.id === id);
+        if (!participant) {
+          return null;
+        }
+        return {
+          id,
+          label: participant.firstname[0],
+          color: participant.favoriteColor,
+        };
+      })
+      .filter(Boolean);
     return (
       <View style={styles.project}>
         <MessageBar />
@@ -103,12 +141,37 @@ export default class CreateProject extends Component {
         <Text style={styles.subtitle}>Tags</Text>
         <TextInput style={styles.itemInput} onChange={this.handleChangeTags} />
         <Button title="ajouter un tag" onPress={this.onPressTag} />
+        <View style={styles.tags}>
+          {this.state.tags.map((label, index) => (
+            <View key={index} style={styles.participant}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.onPressDelete(label);
+                  console.log("test");
+                }}
+              >
+                <TagButton label={label} />
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
         <Text style={styles.subtitle}>Participants</Text>
         <TextInput
           style={styles.itemInput}
           onChange={this.handleChangeParticipants}
         />
         <Button title="ajouter un participant" onPress={this.onPress} />
+        <View style={styles.participants}>
+          {avatars.map(({ id, label, color }) => (
+            <View key={id} style={styles.participant}>
+              <TouchableOpacity
+                onPress={() => this.onPressDeleteUser(id.toString())}
+              >
+                <Avatar label={label} color={color} size={75} />
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
         <TouchableHighlight
           style={styles.button}
           underlayColor="white"
@@ -120,7 +183,7 @@ export default class CreateProject extends Component {
           title="annuler"
           style={styles.buttonTextQuit}
           onPress={() => this.props.navigation.navigate("Projets")}
-        ></Button>
+        />
       </View>
     );
   }
@@ -191,5 +254,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: "stretch",
     justifyContent: "center",
+  },
+  tags: {
+    flexDirection: "row",
+  },
+  participants: {
+    flexDirection: "row",
   },
 });

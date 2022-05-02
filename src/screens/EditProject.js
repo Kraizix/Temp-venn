@@ -58,7 +58,6 @@ export default class EditProject extends Component {
         this.setState((prevState) => ({
           participants: [...prevState.participants, newMember.id.toString()],
         }));
-        this.setState({ value: "" });
         console.log(this.state.participants);
         showMessage("Participant ajouté !", {
           duration: 3000,
@@ -71,6 +70,7 @@ export default class EditProject extends Component {
   }
   onPressTag() {
     if (this.state.tags.includes(this.state.tag)) {
+      showMessage("Tag déjà présent dans le projet", { duration: 3000 });
       return;
     }
     console.log(this.state.tags);
@@ -78,7 +78,6 @@ export default class EditProject extends Component {
       this.setState((prevState) => ({
         tags: [...prevState.tags, this.state.tag],
       }));
-      this.setState({ tag: "" });
       console.log(this.state.tags);
       showMessage("Tag bien ajouté !", { duration: 3000 });
     }
