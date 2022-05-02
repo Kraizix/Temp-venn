@@ -1,73 +1,44 @@
-<p align="center">
-  <img
-    width="300px"
-    src="docs/logo.png"
-    alt="Venn Project Logo" />
-</p>
+# Dev mobile - Venn application
+> Dautrement Valentin
+> Gélineau Benjamin 
+> Granger kévin
 
-<h1 align="center">Venn Project</h1>
+## Explaination
+- The objective of the project was to create a simple mobile application for creating collaborative projects
 
-## Introduction
+## prerequisites
+```
+react-native
+firestore database
+npm install yarn
+expo go
+```
+## Setup
 
-Venn Project allows members to create communities to collaborate on projects.
+- First you will need to git clone the project:
 
-[Use it now !](https://expo.dev/@qbaepst/venn-project)
-
-## Contributing
-
-[Yarn](https://classic.yarnpkg.com/en/docs/cli/) is used as package manager.
-
-To setup your local dev environment:
-
-1. Install [Yarn](https://classic.yarnpkg.com/en/docs/install)
-
-2. Clone repository
-
-```sh
-git clone git@github.com:quibaritaenperdresatrompe/venn-project.git
-cd venn-project
+```
+https://github.com/Kraizix/Temp-venn.git
 ```
 
-3. Install dependencies
+- Then you will need to install the differents libraries that you dont have yet in your pc.
+Example: `yarn install`
 
-```sh
-yarn install
-```
+- After that you just have to do: `yarn start` to launch the project.
 
-4. See [more available scripts](README.md#scripts)
+## App
 
-## Available Scripts
+### Identification
 
-In the project directory, you can run:
+- There you are ! You arrived on the first screen of the app, the identifacation screen.
+![](https://i.imgur.com/ZVCgg3S.png)
 
-### `start`
+### Project List
 
-Starts local dev server for the app, see [`expo start`](https://docs.expo.dev/workflow/expo-cli/#expo-start).
+- On this screen you can see the differents project created.
+![](https://i.imgur.com/AE1fgQN.png)
 
-### `web`
+### Create Project
 
-Opens your app in a web browser.
-
-### `android`
-
-Opens your app in Expo Go on a connected Android device.
-
-### `ios`
-
-Opens your app in Expo Go in a currently running iOS simulator on your computer.
-
-### `commit`
-
-Runs the [`git-cz`](https://github.com/streamich/git-cz) CLI to generate commit messages according to the [_Conventional Commit specifications_](https://www.conventionalcommits.org/en/v1.0.0/#specification).
-
-### `format`
-
-Runs [Prettier](https://prettier.io/) with [basic configuration](https://prettier.io/docs/en/configuration.html#basic-configuration).
-
-We recommend to use Prettier in your IDE, e.g. in Visual Studio code with [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
-
-### `lint`
-
-Runs [ESLint](https://eslint.org/) with [standard configuration](https://standardjs.com/).
-
-We recommend to use ESLint in your IDE, e.g. in Visual Studio code with [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+- Then you can create your own projects
+![](https://i.imgur.com/NugVfmU.png)
