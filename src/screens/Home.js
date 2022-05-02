@@ -5,12 +5,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Members from "./Members";
 import Projects from "./Projects";
-<<<<<<< HEAD
 import AddUrl from "./AddUrl";
 
-=======
 import CreateProject from "./CreateProject";
->>>>>>> CreateProjects
 const Tab = createBottomTabNavigator();
 
 function Home({ navigation, route }) {
