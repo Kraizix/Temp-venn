@@ -16,6 +16,8 @@ import { showMessage, MessageBar } from "react-native-messages";
 import { getAll } from "../firebase";
 import Avatar from "../components/Avatar";
 import data from "../../assets/data.json";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default class CreateProject extends Component {
   constructor(props) {
@@ -88,6 +90,7 @@ export default class CreateProject extends Component {
       participants: this.state.participants,
       tags: this.state.tags,
     });
+    this.props.navigation.navigate("Projets");
   }
 
   render() {
@@ -106,7 +109,6 @@ export default class CreateProject extends Component {
           onChange={this.handleChangeParticipants}
         />
         <Button title="ajouter un participant" onPress={this.onPress} />
-
         <TouchableHighlight
           style={styles.button}
           underlayColor="white"
@@ -116,8 +118,8 @@ export default class CreateProject extends Component {
         </TouchableHighlight>
         <Button
           title="annuler"
-          onPress={() => this.props.navigation.navigate("Accueil")}
           style={styles.buttonTextQuit}
+          onPress={() => this.props.navigation.navigate("Projets")}
         ></Button>
       </View>
     );
@@ -160,20 +162,28 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 16,
   },
+  avatar: {
+    margin: 8,
+  },
   buttonText: {
     fontSize: 18,
-    color: "#111",
+    color: "white",
     alignSelf: "center",
+    fontWeight: "700",
+    fontStyle: "normal",
   },
   buttonTextQuit: {
     fontSize: 18,
+    fontWeight: "700",
+    fontStyle: "normal",
     color: "red",
     alignSelf: "center",
+    backgroundColor: "white",
   },
   button: {
     height: 45,
     flexDirection: "row",
-    backgroundColor: "#18F1F7",
+    backgroundColor: "#32B67A",
     borderColor: "white",
     borderWidth: 1,
     borderRadius: 8,
