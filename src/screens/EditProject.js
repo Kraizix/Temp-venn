@@ -259,7 +259,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   quitButton: {
-    size: 12,
     backgroundColor: "red",
     height: 45,
     borderRadius: 8,

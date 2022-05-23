@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width - 1200,
     fontSize: 20,
     fontWeight: "700",
-    fontColor: "black",
+    color: "black",
     marginVertical: 8,
   },
   title: {
